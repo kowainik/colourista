@@ -1,0 +1,55 @@
+cabal-version:       2.0
+name:                colourista
+version:             0.0.0.0
+synopsis:            Convenient interface for printing colourful messages
+description:         Convenient interface for printing colourful messages
+homepage:            https://github.com/kowainik/colourista
+bug-reports:         https://github.com/kowainik/colourista/issues
+license:             MPL-2.0
+license-file:        LICENSE
+author:              Kowainik
+maintainer:          xrom.xkov@gmail.com
+copyright:           2020 Kowainik
+category:            Terminal, ANSI
+build-type:          Simple
+extra-doc-files:     README.md
+                   , CHANGELOG.md
+tested-with:         GHC == 8.2.2
+                   , GHC == 8.4.4
+                   , GHC == 8.6.5
+                   , GHC == 8.8.1
+
+source-repository head
+  type:                git
+  location:            https://github.com/kowainik/colourista.git
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Colourista
+                       
+
+  build-depends:       base >= 4.10.1.0 && < 4.14
+                     
+
+  ghc-options:         -Wall
+                       -Wincomplete-uni-patterns
+                       -Wincomplete-record-updates
+                       -Wcompat
+                       -Widentities
+                       -Wredundant-constraints
+                       -fhide-source-paths
+
+  default-language:    Haskell2010
+  default-extensions:  ConstraintKinds
+                       DeriveGeneric
+                       GeneralizedNewtypeDeriving
+                       InstanceSigs
+                       KindSignatures
+                       LambdaCase
+                       OverloadedStrings
+                       RecordWildCards
+                       ScopedTypeVariables
+                       StandaloneDeriving
+                       TupleSections
+                       TypeApplications
+                       ViewPatterns
