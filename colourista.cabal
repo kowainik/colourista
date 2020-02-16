@@ -2,13 +2,13 @@ cabal-version:       2.4
 name:                colourista
 version:             0.0.0.0
 synopsis:            Convenient interface for printing colourful messages
-description:         Convenient interface for printing colourful messages
+description:         Convenient interface for printing colourful messages based on the @ansi-terminal@ library.
 homepage:            https://github.com/kowainik/colourista
 bug-reports:         https://github.com/kowainik/colourista/issues
 license:             MPL-2.0
 license-file:        LICENSE
-author:              Kowainik
-maintainer:          xrom.xkov@gmail.com
+author:              Veronika Romashkina, Dmitrii Kovanikov
+maintainer:          Kowainik <xrom.xkov@gmail.com>
 copyright:           2020 Kowainik
 category:            Terminal, ANSI
 build-type:          Simple
