@@ -25,50 +25,86 @@ module Colourista.Pure
     , reset
     ) where
 
+import Data.ByteString (ByteString)
+import Data.String (IsString (..))
+import Data.Text (Text)
 import System.Console.ANSI (Color (..), ColorIntensity (Vivid), ConsoleIntensity (BoldIntensity),
                             ConsoleLayer (Foreground), SGR (..), setSGRCode)
 
 
 -- | Code to apply 'Red' colouring for the terminal output.
-red :: String
-red = setSGRCode [SetColor Foreground Vivid Red]
+red :: IsString str => str
+red = fromString $ setSGRCode [SetColor Foreground Vivid Red]
+{-# SPECIALIZE red :: String     #-}
+{-# SPECIALIZE red :: Text       #-}
+{-# SPECIALIZE red :: ByteString #-}
 
 -- | Code to apply 'Green' colouring for the terminal output.
-green :: String
-green = setSGRCode [SetColor Foreground Vivid Green]
+green :: IsString str => str
+green = fromString $ setSGRCode [SetColor Foreground Vivid Green]
+{-# SPECIALIZE green :: String     #-}
+{-# SPECIALIZE green :: Text       #-}
+{-# SPECIALIZE green :: ByteString #-}
 
 -- | Code to apply 'Blue' colouring for the terminal output.
-blue :: String
-blue = setSGRCode [SetColor Foreground Vivid Blue]
+blue :: IsString str => str
+blue = fromString $ setSGRCode [SetColor Foreground Vivid Blue]
+{-# SPECIALIZE blue :: String     #-}
+{-# SPECIALIZE blue :: Text       #-}
+{-# SPECIALIZE blue :: ByteString #-}
 
 -- | Code to apply 'Yellow' colouring for the terminal output.
-yellow :: String
-yellow = setSGRCode [SetColor Foreground Vivid Yellow]
+yellow :: IsString str => str
+yellow = fromString $ setSGRCode [SetColor Foreground Vivid Yellow]
+{-# SPECIALIZE yellow :: String     #-}
+{-# SPECIALIZE yellow :: Text       #-}
+{-# SPECIALIZE yellow :: ByteString #-}
 
 -- | Code to apply 'Black' colouring for the terminal output.
-black :: String
-black = setSGRCode [SetColor Foreground Vivid Black]
+black :: IsString str => str
+black = fromString $ setSGRCode [SetColor Foreground Vivid Black]
+{-# SPECIALIZE black :: String     #-}
+{-# SPECIALIZE black :: Text       #-}
+{-# SPECIALIZE black :: ByteString #-}
 
 -- | Code to apply 'White' colouring for the terminal output.
-white :: String
-white = setSGRCode [SetColor Foreground Vivid White]
+white :: IsString str => str
+white = fromString $ setSGRCode [SetColor Foreground Vivid White]
+{-# SPECIALIZE white :: String     #-}
+{-# SPECIALIZE white :: Text       #-}
+{-# SPECIALIZE white :: ByteString #-}
 
 -- | Code to apply 'Magenta' colouring for the terminal output.
-magenta :: String
-magenta = setSGRCode [SetColor Foreground Vivid Magenta]
+magenta :: IsString str => str
+magenta = fromString $ setSGRCode [SetColor Foreground Vivid Magenta]
+{-# SPECIALIZE magenta :: String     #-}
+{-# SPECIALIZE magenta :: Text       #-}
+{-# SPECIALIZE magenta :: ByteString #-}
 
 -- | Code to apply 'Cyan' colouring for the terminal output.
-cyan :: String
-cyan = setSGRCode [SetColor Foreground Vivid Cyan]
+cyan :: IsString str => str
+cyan = fromString $ setSGRCode [SetColor Foreground Vivid Cyan]
+{-# SPECIALIZE cyan :: String     #-}
+{-# SPECIALIZE cyan :: Text       #-}
+{-# SPECIALIZE cyan :: ByteString #-}
 
 -- | Code to apply 'Bold' emphasis for the terminal output.
-bold :: String
-bold = setSGRCode [SetConsoleIntensity BoldIntensity]
+bold :: IsString str => str
+bold = fromString $ setSGRCode [SetConsoleIntensity BoldIntensity]
+{-# SPECIALIZE bold :: String     #-}
+{-# SPECIALIZE bold :: Text       #-}
+{-# SPECIALIZE bold :: ByteString #-}
 
 -- | Code to apply 'Italic' emphasis for the terminal output.
-italic :: String
-italic = setSGRCode [SetItalicized True]
+italic :: IsString str => str
+italic = fromString $ setSGRCode [SetItalicized True]
+{-# SPECIALIZE italic :: String     #-}
+{-# SPECIALIZE italic :: Text       #-}
+{-# SPECIALIZE italic :: ByteString #-}
 
 -- | Code to reset all previous code applied for the terminal output.
-reset :: String
-reset = setSGRCode [Reset]
+reset :: IsString str => str
+reset = fromString $ setSGRCode [Reset]
+{-# SPECIALIZE reset :: String     #-}
+{-# SPECIALIZE reset :: Text       #-}
+{-# SPECIALIZE reset :: ByteString #-}
