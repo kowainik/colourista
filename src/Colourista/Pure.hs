@@ -7,8 +7,9 @@ This module introduces helpful pure codes to customise the terminal output view.
 -}
 
 module Colourista.Pure
-    ( -- * Colour
-      red
+    ( formatWith
+      -- * Colour
+    , red
     , green
     , blue
     , yellow
@@ -36,11 +37,38 @@ module Colourista.Pure
     ) where
 
 import Data.ByteString (ByteString)
+import Data.List.NonEmpty (NonEmpty (..))
+import Data.Semigroup (Semigroup (..))
 import Data.String (IsString (..))
 import Data.Text (Text)
 import System.Console.ANSI (Color (..), ColorIntensity (Vivid), ConsoleIntensity (BoldIntensity),
                             ConsoleLayer (Background, Foreground), SGR (..), setSGRCode)
 
+
+{- | General purpose function to format strings with multiple
+options. If this function takes empty list as an argument, no
+formatting is applied.
+
+Some typical usages include but not limited to:
+
+1. Green text: @'formatWith' ['green'] myString@
+2. Bold red text: @'formatWith' ['bold', 'red'] myString@
+3. Blue text on white background: @'formatWith' ['blue', 'whiteBg'] myString@
+4. Italicized yellow on cyan background: @'formatWith' ['italic', 'yellow', 'cyanBg'] myString@
+
+![Colored examples](https://user-images.githubusercontent.com/4276606/74608609-8acced80-50da-11ea-9a32-e64eba6935c1.png)
+-}
+formatWith
+    :: (IsString str, Semigroup str)
+    => [str]
+    -> str
+    -> str
+formatWith formatting str = case formatting of
+    []   -> str
+    x:xs -> sconcat (x :| xs) <> str <> reset
+{-# SPECIALIZE formatWith :: [String]     -> String     -> String     #-}
+{-# SPECIALIZE formatWith :: [Text]       -> Text       -> Text       #-}
+{-# SPECIALIZE formatWith :: [ByteString] -> ByteString -> ByteString #-}
 
 ----------------------------------------------------------------------------
 -- Colours
@@ -166,14 +194,14 @@ cyanBg = fromString $ setSGRCode [SetColor Background Vivid Cyan]
 -- Emphasis
 ----------------------------------------------------------------------------
 
--- | Code to apply 'Bold' emphasis for the terminal output.
+-- | Code to apply __bold__ emphasis for the terminal output.
 bold :: IsString str => str
 bold = fromString $ setSGRCode [SetConsoleIntensity BoldIntensity]
 {-# SPECIALIZE bold :: String     #-}
 {-# SPECIALIZE bold :: Text       #-}
 {-# SPECIALIZE bold :: ByteString #-}
 
--- | Code to apply 'Italic' emphasis for the terminal output.
+-- | Code to apply /italic/ emphasis for the terminal output.
 italic :: IsString str => str
 italic = fromString $ setSGRCode [SetItalicized True]
 {-# SPECIALIZE italic :: String     #-}
