@@ -8,12 +8,14 @@ that 'Colourista' provides to you.
 -}
 
 module Colourista
-       ( -- $pure
-         module Colourista.Pure
+       ( module Colourista.Pure
+         -- $pure
        ) where
+
+import Colourista.Pure
+
 
 {- $pure
 The set of pure functions that represents codes to use for the terminal output
 customisation: colouring and emphasis.
 -}
-import Colourista.Pure
