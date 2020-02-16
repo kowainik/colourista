@@ -45,7 +45,11 @@ import System.Console.ANSI (Color (..), ColorIntensity (Vivid), ConsoleIntensity
                             ConsoleLayer (Background, Foreground), SGR (..), setSGRCode)
 
 
-{- | General purpose function to format strings with multiple options. Some typical usages:
+{- | General purpose function to format strings with multiple
+options. If this function takes empty list as an argument, no
+formatting is applied.
+
+Some typical usages include but not limited to:
 
 1. Green text: @'formatWith' ['green'] myString@
 2. Bold red text: @'formatWith' ['bold', 'red'] myString@
@@ -190,14 +194,14 @@ cyanBg = fromString $ setSGRCode [SetColor Background Vivid Cyan]
 -- Emphasis
 ----------------------------------------------------------------------------
 
--- | Code to apply 'Bold' emphasis for the terminal output.
+-- | Code to apply __bold__ emphasis for the terminal output.
 bold :: IsString str => str
 bold = fromString $ setSGRCode [SetConsoleIntensity BoldIntensity]
 {-# SPECIALIZE bold :: String     #-}
 {-# SPECIALIZE bold :: Text       #-}
 {-# SPECIALIZE bold :: ByteString #-}
 
--- | Code to apply 'Italic' emphasis for the terminal output.
+-- | Code to apply /italic/ emphasis for the terminal output.
 italic :: IsString str => str
 italic = fromString $ setSGRCode [SetItalicized True]
 {-# SPECIALIZE italic :: String     #-}
