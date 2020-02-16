@@ -26,8 +26,10 @@ source-repository head
 library
   hs-source-dirs:      src
   exposed-modules:     Colourista
+                         Colourista.Pure
 
   build-depends:       base >= 4.10.1.0 && < 4.14
+                     , ansi-terminal ^>= 0.10
 
   ghc-options:         -Wall
                        -Wincomplete-uni-patterns
