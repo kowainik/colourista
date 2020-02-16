@@ -5,6 +5,8 @@ Maintainer: Kowainik <xrom.xkov@gmail.com>
 
 Improve your terminal output with the handy helpers of @ansi-terminal@ functions
 that @colourista@ provides to you.
+
+<<https://user-images.githubusercontent.com/8126674/74609327-0a5dbb00-50e1-11ea-8c4b-2db4ab5b42a2.png Output>>
 -}
 
 module Colourista
