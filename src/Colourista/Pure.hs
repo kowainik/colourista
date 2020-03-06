@@ -31,6 +31,7 @@ module Colourista.Pure
       -- * Emphasis
     , bold
     , italic
+    , indent
 
       -- * Reset
     , reset
@@ -207,6 +208,10 @@ italic = fromString $ setSGRCode [SetItalicized True]
 {-# SPECIALIZE italic :: String     #-}
 {-# SPECIALIZE italic :: Text       #-}
 {-# SPECIALIZE italic :: ByteString #-}
+
+-- | Creates an indentation
+indent :: IsString str => Int -> str
+indent amount = fromString $ replicate amount ' '
 
 -- | Code to reset all previous code applied for the terminal output.
 reset :: IsString str => str
