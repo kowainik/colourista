@@ -64,7 +64,7 @@ In order to start using `colourista` in your project, you will need to set it up
    ```
 ### Usage with Stack
 
-If `colourista` is not available on your current Stackage resolve yet, fear not! You can still use
+If `colourista` is not available on your current Stackage resolver yet, fear not! You can still use
 it from Hackage by adding the following to the `extra-deps` section of your `stack.yaml`
 file:
 
