@@ -75,9 +75,9 @@ extra-deps:
   - ansi-terminal-0.10.3@sha256:e2fbcef5f980dc234c7ad8e2fa433b0e8109132c9e643bc40ea5608cd5697797,3226
 ```
 
-Then we can add it as a dependency in your `package.yaml` file as usual:
+Then you can add it as a dependency in your `package.yaml` file as usual:
 
-```
+```yaml
 library:
   source-dirs: src
   dependencies:
