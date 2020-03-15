@@ -62,6 +62,27 @@ In order to start using `colourista` in your project, you will need to set it up
    main :: IO ()
    main = successMessage "All set up!"
    ```
+### Usage with Stack
+
+If `colourista` is not available on your current Stackage resolver yet, fear not! You can still use
+it from Hackage by adding the following to the `extra-deps` section of your `stack.yaml`
+file:
+
+```yaml
+extra-deps:
+  - colourista-0.0.0.0
+  - ansi-terminal-0.10
+```
+
+Then you can add it as a dependency in your `package.yaml` file as usual:
+
+```yaml
+library:
+  dependencies:
+    - colourista
+```
+
+Great!
 
 ## Acknowledgement
 
