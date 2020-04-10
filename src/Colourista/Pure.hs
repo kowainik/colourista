@@ -31,6 +31,9 @@ module Colourista.Pure
       -- * Emphasis
     , bold
     , italic
+    , singleUnderline
+    , doubleUnderline
+    , noUnderline
 
       -- * Reset
     , reset
@@ -42,7 +45,8 @@ import Data.Semigroup (Semigroup (..))
 import Data.String (IsString (..))
 import Data.Text (Text)
 import System.Console.ANSI (Color (..), ColorIntensity (Vivid), ConsoleIntensity (BoldIntensity),
-                            ConsoleLayer (Background, Foreground), SGR (..), setSGRCode)
+                            ConsoleLayer (Background, Foreground), SGR (..), Underlining (..),
+                            setSGRCode)
 
 
 {- | General purpose function to format strings with multiple
@@ -214,3 +218,24 @@ reset = fromString $ setSGRCode [Reset]
 {-# SPECIALIZE reset :: String     #-}
 {-# SPECIALIZE reset :: Text       #-}
 {-# SPECIALIZE reset :: ByteString #-}
+
+-- | Code to apply __singleUnderline__ emphasis for the terminal output.
+singleUnderline :: IsString str => str
+singleUnderline = fromString $ setSGRCode [SetUnderlining SingleUnderline]
+{-# SPECIALIZE singleUnderline :: String     #-}
+{-# SPECIALIZE singleUnderline :: Text       #-}
+{-# SPECIALIZE singleUnderline :: ByteString #-}
+
+-- | Code to apply __doubleUnderline__ emphasis for the terminal output.
+doubleUnderline :: IsString str => str
+doubleUnderline = fromString $ setSGRCode [SetUnderlining DoubleUnderline]
+{-# SPECIALIZE italic :: String     #-}
+{-# SPECIALIZE italic :: Text       #-}
+{-# SPECIALIZE italic :: ByteString #-}
+
+-- | Code to apply 'noUnderline' emphasis for the terminal output.
+noUnderline :: IsString str => str
+noUnderline = fromString $ setSGRCode [SetUnderlining NoUnderline]
+{-# SPECIALIZE noUnderline :: String     #-}
+{-# SPECIALIZE noUnderline :: Text       #-}
+{-# SPECIALIZE noUnderline :: ByteString #-}
