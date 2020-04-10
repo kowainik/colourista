@@ -229,9 +229,9 @@ singleUnderline = fromString $ setSGRCode [SetUnderlining SingleUnderline]
 -- | Code to apply __doubleUnderline__ emphasis for the terminal output.
 doubleUnderline :: IsString str => str
 doubleUnderline = fromString $ setSGRCode [SetUnderlining DoubleUnderline]
-{-# SPECIALIZE italic :: String     #-}
-{-# SPECIALIZE italic :: Text       #-}
-{-# SPECIALIZE italic :: ByteString #-}
+{-# SPECIALIZE doubleUnderline :: String     #-}
+{-# SPECIALIZE doubleUnderline :: Text       #-}
+{-# SPECIALIZE doubleUnderline :: ByteString #-}
 
 -- | Code to apply 'noUnderline' emphasis for the terminal output.
 noUnderline :: IsString str => str
