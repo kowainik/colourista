@@ -31,6 +31,9 @@ module Colourista.Pure
       -- * Emphasis
     , bold
     , italic
+    , singleUnderline
+    , doubleUnderline
+    , noUnderline
 
       -- * Reset
     , reset
@@ -42,7 +45,8 @@ import Data.Semigroup (Semigroup (..))
 import Data.String (IsString (..))
 import Data.Text (Text)
 import System.Console.ANSI (Color (..), ColorIntensity (Vivid), ConsoleIntensity (BoldIntensity),
-                            ConsoleLayer (Background, Foreground), SGR (..), setSGRCode)
+                            ConsoleLayer (Background, Foreground), SGR (..), Underlining (..),
+                            setSGRCode)
 
 
 {- | General purpose function to format strings with multiple
@@ -55,6 +59,8 @@ Some typical usages include but not limited to:
 2. Bold red text: @'formatWith' ['bold', 'red'] myString@
 3. Blue text on white background: @'formatWith' ['blue', 'whiteBg'] myString@
 4. Italicized yellow on cyan background: @'formatWith' ['italic', 'yellow', 'cyanBg'] myString@
+
+NB: Double underlining 'doubleUnderline' is not widely supported. It is also not natively supported on Windows 10.
 
 ![Colored examples](https://user-images.githubusercontent.com/4276606/74608609-8acced80-50da-11ea-9a32-e64eba6935c1.png)
 -}
@@ -214,3 +220,26 @@ reset = fromString $ setSGRCode [Reset]
 {-# SPECIALIZE reset :: String     #-}
 {-# SPECIALIZE reset :: Text       #-}
 {-# SPECIALIZE reset :: ByteString #-}
+
+-- | Code to apply __singleUnderline__ emphasis for the terminal output.
+singleUnderline :: IsString str => str
+singleUnderline = fromString $ setSGRCode [SetUnderlining SingleUnderline]
+{-# SPECIALIZE singleUnderline :: String     #-}
+{-# SPECIALIZE singleUnderline :: Text       #-}
+{-# SPECIALIZE singleUnderline :: ByteString #-}
+
+-- | Code to apply __doubleUnderline__ emphasis for the terminal output.
+-- | NB: This is not widely supported. It is not natively supported on Windows
+-- | 10
+doubleUnderline :: IsString str => str
+doubleUnderline = fromString $ setSGRCode [SetUnderlining DoubleUnderline]
+{-# SPECIALIZE doubleUnderline :: String     #-}
+{-# SPECIALIZE doubleUnderline :: Text       #-}
+{-# SPECIALIZE doubleUnderline :: ByteString #-}
+
+-- | Code to apply 'noUnderline' emphasis for the terminal output.
+noUnderline :: IsString str => str
+noUnderline = fromString $ setSGRCode [SetUnderlining NoUnderline]
+{-# SPECIALIZE noUnderline :: String     #-}
+{-# SPECIALIZE noUnderline :: Text       #-}
+{-# SPECIALIZE noUnderline :: ByteString #-}
