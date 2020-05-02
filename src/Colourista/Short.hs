@@ -1,3 +1,5 @@
+{-# LANGUAGE CPP #-}
+
 {- |
 Copyright: (c) 2020 Kowainik
 SPDX-License-Identifier: MPL-2.0
@@ -13,6 +15,9 @@ module Colourista.Short
     ) where
 
 import Data.ByteString (ByteString)
+#if __GLASGOW_HASKELL__ < 804
+import Data.Semigroup (Semigroup)
+#endif
 import Data.String (IsString)
 import Data.Text (Text)
 
