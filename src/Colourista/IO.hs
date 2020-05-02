@@ -1,3 +1,5 @@
+{-# LANGUAGE CPP #-}
+
 {- |
 Copyright: (c) 2020 Kowainik
 SPDX-License-Identifier: MPL-2.0
@@ -30,6 +32,9 @@ module Colourista.IO
     , formattedMessage
     ) where
 
+#if __GLASGOW_HASKELL__ < 804
+import Data.Semigroup (Semigroup (..))
+#endif
 import Data.Text (Text)
 
 import qualified Data.Text.IO as TIO
