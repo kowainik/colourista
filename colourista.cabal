@@ -29,6 +29,7 @@ library
   exposed-modules:     Colourista
                          Colourista.IO
                          Colourista.Pure
+                         Colourista.Short
 
   build-depends:       base >= 4.10.1.0 && < 4.15
                      , ansi-terminal ^>= 0.10
