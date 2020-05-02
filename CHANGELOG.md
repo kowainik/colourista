@@ -9,6 +9,13 @@ The changelog is available [on GitHub][2].
   Support GHC-8.10.
 * [#27](https://github.com/kowainik/colourista/issues/27):
   Add unicode indicators to `*Message` functions.
+* [#17](https://github.com/kowainik/colourista/issues/17):
+  Add `indent` formatting function.
+* [#7](https://github.com/kowainik/colourista/issues/7):
+  Add `underline`, `doubleUnderline`, `noUnderline` formatting functions.
+* [#28](https://github.com/kowainik/colourista/issues/28):
+  Add `Colourista.Short` with short aliases for `bold`, `italic` and
+  `underline`.
 
 ## 0.0.0.0 — Feb 16, 2020 🌈
 
