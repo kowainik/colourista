@@ -17,7 +17,7 @@ module Colourista.IO
     , whiteMessage
     , magentaMessage
     , cyanMessage
-      -- ** Aliases
+      -- ** Aliases with unicode indicators
     , successMessage
     , infoMessage
     , skipMessage
@@ -84,29 +84,44 @@ cyanMessage = formattedMessage [Colourista.cyan]
 -- Informative aliases
 ----------------------------------------------------------------------------
 
--- | Alias for 'greenMessage' that specifies message severity.
+{- | Similar to 'greenMessage', but add unicode indicator.
+
+<<https://user-images.githubusercontent.com/4276606/80867598-dbd99000-8c8c-11ea-9fac-81a1a606d8d8.png Success message>>
+-}
 successMessage :: Text -> IO ()
-successMessage = greenMessage
+successMessage t = greenMessage $ "  ✔ " <> t
 {-# INLINE successMessage #-}
 
--- | Alias for 'blueMessage' that specifies message severity.
+{- | Similar to 'blueMessage', but add unicode indicator.
+
+<<https://user-images.githubusercontent.com/4276606/80867597-db40f980-8c8c-11ea-9775-e8a3c4a7aaa2.png Information message>>
+-}
 infoMessage :: Text -> IO ()
-infoMessage = blueMessage
+infoMessage t = blueMessage $ "  ⓘ " <> t
 {-# INLINE infoMessage #-}
 
--- | Alias for 'cyanMessage' that specifies message severity.
+{- | Similar to 'cyanMessage', but add unicode indicator.
+
+<<https://user-images.githubusercontent.com/4276606/80867596-db40f980-8c8c-11ea-8131-9c7cba32a4fd.png Skip message>>
+-}
 skipMessage :: Text -> IO ()
-skipMessage = cyanMessage
+skipMessage t = cyanMessage $ "  ▶ " <> t
 {-# INLINE skipMessage #-}
 
--- | Alias for 'yellowMessage' that specifies message severity.
+{- | Similar to 'yellowMessage', but add unicode indicator.
+
+<<https://user-images.githubusercontent.com/4276606/80867594-daa86300-8c8c-11ea-9c6a-a42b634a1e4b.png Warning message>>
+-}
 warningMessage :: Text -> IO ()
-warningMessage = yellowMessage
+warningMessage t = yellowMessage $ "  ⚠ " <> t
 {-# INLINE warningMessage #-}
 
--- | Alias for 'redMessage' that specifies message severity.
+{- | Similar to 'redMessage', but add unicode indicator.
+
+<<https://user-images.githubusercontent.com/4276606/80867592-da0fcc80-8c8c-11ea-90e0-42aae8770c18.png Error message>>
+-}
 errorMessage :: Text -> IO ()
-errorMessage = redMessage
+errorMessage t = redMessage $ "  🛑 " <> t
 {-# INLINE errorMessage #-}
 
 ----------------------------------------------------------------------------
