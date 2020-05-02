@@ -121,7 +121,7 @@ warningMessage t = yellowMessage $ "  ⚠ " <> t
 <<https://user-images.githubusercontent.com/4276606/80867592-da0fcc80-8c8c-11ea-90e0-42aae8770c18.png Error message>>
 -}
 errorMessage :: Text -> IO ()
-errorMessage t = redMessage $ "  🛑 " <> t
+errorMessage t = redMessage $ "  \128721 " <> t
 {-# INLINE errorMessage #-}
 
 ----------------------------------------------------------------------------
