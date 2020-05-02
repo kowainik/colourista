@@ -34,6 +34,7 @@ module Colourista.Pure
     , underline
     , doubleUnderline
     , noUnderline
+    , indent
 
       -- * Reset
     , reset
@@ -216,13 +217,6 @@ italic = fromString $ setSGRCode [SetItalicized True]
 {-# SPECIALIZE italic :: Text       #-}
 {-# SPECIALIZE italic :: ByteString #-}
 
--- | Code to reset all previous code applied for the terminal output.
-reset :: IsString str => str
-reset = fromString $ setSGRCode [Reset]
-{-# SPECIALIZE reset :: String     #-}
-{-# SPECIALIZE reset :: Text       #-}
-{-# SPECIALIZE reset :: ByteString #-}
-
 -- | Code to apply __underline__ emphasis for the terminal output.
 underline :: IsString str => str
 underline = fromString $ setSGRCode [SetUnderlining SingleUnderline]
@@ -247,3 +241,17 @@ noUnderline = fromString $ setSGRCode [SetUnderlining NoUnderline]
 {-# SPECIALIZE noUnderline :: String     #-}
 {-# SPECIALIZE noUnderline :: Text       #-}
 {-# SPECIALIZE noUnderline :: ByteString #-}
+
+-- | Code to indent the terminal output by the given amount of spaces.
+indent :: (IsString str, Semigroup str) => Int -> str
+indent n = stimes n " "
+{-# SPECIALIZE indent :: Int -> String     #-}
+{-# SPECIALIZE indent :: Int -> Text       #-}
+{-# SPECIALIZE indent :: Int -> ByteString #-}
+
+-- | Code to reset all previous code applied for the terminal output.
+reset :: IsString str => str
+reset = fromString $ setSGRCode [Reset]
+{-# SPECIALIZE reset :: String     #-}
+{-# SPECIALIZE reset :: Text       #-}
+{-# SPECIALIZE reset :: ByteString #-}
