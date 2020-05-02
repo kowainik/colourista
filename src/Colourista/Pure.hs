@@ -244,7 +244,9 @@ noUnderline = fromString $ setSGRCode [SetUnderlining NoUnderline]
 
 -- | Code to indent the terminal output by the given amount of spaces.
 indent :: (IsString str, Semigroup str) => Int -> str
-indent n = stimes n " "
+indent n
+    | n <= 0 = ""
+    | otherwise = stimes n " "
 {-# SPECIALIZE indent :: Int -> String     #-}
 {-# SPECIALIZE indent :: Int -> Text       #-}
 {-# SPECIALIZE indent :: Int -> ByteString #-}
