@@ -84,6 +84,16 @@ library:
 
 Great!
 
+## Troubleshooting
+
+`Couldn't match expected type ‘Text’ with actual type ‘[Char]’`
+
+**Colourista** uses `Text` from `Data.Text` to allow the use of Unicode text, performance reasons, and more (more information in the documentation https://hackage.haskell.org/package/text-1.2.4.0/docs/Data-Text.html). String literals, in Haskell, are not polymorphic at all, and we need to use a syntax extension to correct this.
+
+Adding `{-# LANGUAGE OverloadedStrings #-}` at the top level of your .hs file solves the problem.
+
+You can also run `:set -XOverloadedStrings` in `ghci`.
+
 ## Acknowledgement
 
 Icons made by [Freepik](http://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/).
