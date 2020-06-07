@@ -48,19 +48,22 @@ In order to start using `colourista` in your project, you will need to set it up
 
    ```haskell
    build-depends: base ^>= 4.14
-                , colourista ^>= 0.0
+                , colourista ^>= 0.1
+                , ...
    ```
 2. In the module where you wish to use the colourful output with `colourista`,
    you should add the import:
 
    ```haskell
-   import Colourista (successMessage)
+   import Colourista (...)
    ```
-3. Now you can use the functions from the library:
+3. Now you can use the functions from the library. For example:
 
    ```haskell
+   import qualified Data.Text as Text
+
    main :: IO ()
-   main = successMessage "All set up!"
+   main = successMessage $ Text.pack "All set up!"
    ```
 ### Usage with Stack
 
@@ -70,8 +73,8 @@ file:
 
 ```yaml
 extra-deps:
-  - colourista-0.0.0.0
-  - ansi-terminal-0.10
+  - colourista-0.1.0.0
+  - ...
 ```
 
 Then you can add it as a dependency in your `package.yaml` file as usual:
