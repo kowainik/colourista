@@ -30,12 +30,14 @@ module Colourista.IO
     , italicMessage
       -- * General purpose
     , formattedMessage
+    , formattedErrorMessage
     ) where
 
 #if __GLASGOW_HASKELL__ < 804
 import Data.Semigroup (Semigroup (..))
 #endif
 import Data.Text (Text)
+import System.IO (stderr)
 
 import qualified Data.Text.IO as TIO
 
@@ -121,12 +123,12 @@ warningMessage :: Text -> IO ()
 warningMessage t = yellowMessage $ "  ⚠ " <> t
 {-# INLINE warningMessage #-}
 
-{- | Similar to 'redMessage', but add unicode indicator.
+{- | Similar to 'redMessage', but add unicode indicator and writes to stderr.
 
 <<https://user-images.githubusercontent.com/4276606/80867592-da0fcc80-8c8c-11ea-90e0-42aae8770c18.png Error message>>
 -}
 errorMessage :: Text -> IO ()
-errorMessage t = redMessage $ "  \128721 " <> t
+errorMessage t = formattedErrorMessage [Colourista.red] $ "  \128721 " <> t
 {-# INLINE errorMessage #-}
 
 ----------------------------------------------------------------------------
@@ -156,3 +158,9 @@ list, no formatting is applied.
 formattedMessage :: [Text] -> Text -> IO ()
 formattedMessage formatting = TIO.putStrLn . Colourista.formatWith formatting
 {-# INLINE formattedMessage #-}
+
+{- | A variant of 'formattedMessage' that writes to 'stderr'
+-}
+formattedErrorMessage :: [Text] -> Text -> IO ()
+formattedErrorMessage formatting = TIO.hPutStrLn stderr . Colourista.formatWith formatting
+{-# INLINE formattedErrorMessage #-}
