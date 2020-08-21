@@ -1,6 +1,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
 {-# LANGUAGE DataKinds             #-}
+{-# LANGUAGE FlexibleInstances     #-}
 {-# LANGUAGE ImplicitParams        #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 
