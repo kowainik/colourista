@@ -21,26 +21,27 @@ import Data.Semigroup (Semigroup)
 import Data.String (IsString)
 import Data.Text (Text)
 
+import Colourista.Mode (HasColourMode)
 import Colourista.Pure (bold, formatWith, italic, underline)
 
 
 -- | Short alias for 'bold'.
-b :: (IsString str, Semigroup str) => str -> str
+b :: (HasColourMode, IsString str, Semigroup str) => str -> str
 b = formatWith [bold]
-{-# SPECIALIZE b :: String -> String         #-}
-{-# SPECIALIZE b :: Text -> Text             #-}
-{-# SPECIALIZE b :: ByteString -> ByteString #-}
+{-# SPECIALIZE b :: HasColourMode => String -> String         #-}
+{-# SPECIALIZE b :: HasColourMode => Text -> Text             #-}
+{-# SPECIALIZE b :: HasColourMode => ByteString -> ByteString #-}
 
 -- | Short alias for 'italic'.
-i :: (IsString str, Semigroup str) => str -> str
+i :: (HasColourMode, IsString str, Semigroup str) => str -> str
 i = formatWith [italic]
-{-# SPECIALIZE i :: String -> String         #-}
-{-# SPECIALIZE i :: Text -> Text             #-}
-{-# SPECIALIZE i :: ByteString -> ByteString #-}
+{-# SPECIALIZE i :: HasColourMode => String -> String         #-}
+{-# SPECIALIZE i :: HasColourMode => Text -> Text             #-}
+{-# SPECIALIZE i :: HasColourMode => ByteString -> ByteString #-}
 
 -- | Short alias for 'underline'.
-u :: (IsString str, Semigroup str) => str -> str
+u :: (HasColourMode, IsString str, Semigroup str) => str -> str
 u = formatWith [underline]
-{-# SPECIALIZE u :: String -> String         #-}
-{-# SPECIALIZE u :: Text -> Text             #-}
-{-# SPECIALIZE u :: ByteString -> ByteString #-}
+{-# SPECIALIZE u :: HasColourMode => String -> String         #-}
+{-# SPECIALIZE u :: HasColourMode => Text -> Text             #-}
+{-# SPECIALIZE u :: HasColourMode => ByteString -> ByteString #-}

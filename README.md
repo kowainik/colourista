@@ -14,11 +14,16 @@
 >
 > — Coco Chanel
 
-`colourista` is the library that provides a convenient interface for printing
-colourful messages to the terminal. It is based on
-[`ansi-terminal`](https://hackage.haskell.org/package/ansi-terminal), however,
-in contradistinction to this Haskell library, `colourista` is a high-level
-wrapper focused on easily achieved output modification without low-level setup.
+`colourista` is the library that provides a simple and convenient
+interface for printing colourful messages to the
+terminal. Additionally, `colourista` allows to easily control enabling
+and disabling of colours.
+
+The library is based on
+[`ansi-terminal`](https://hackage.haskell.org/package/ansi-terminal),
+however, in contradistinction to this Haskell library, `colourista` is
+a high-level wrapper focused on easily achieved output modification
+without low-level setup.
 
 ## Interface
 
@@ -32,9 +37,16 @@ The two main functions that `colourista` provides are:
 The library also provides a set of different pure and impure helpers for the
 colouring and emphasis.
 
-## Example
+## Examples
+
+Simple output example:
 
 ![output](https://user-images.githubusercontent.com/8126674/74609327-0a5dbb00-50e1-11ea-8c4b-2db4ab5b42a2.png)
+
+Example of disabling colouring. The colour mode controlling is based on the
+[Implicit Parameters](https://downloads.haskell.org/ghc/latest/docs/html/users_guide/glasgow_exts.html#implicit-parameters) GHC feature.
+
+![Colour mode](https://user-images.githubusercontent.com/4276606/90915207-0c2d7180-e3d7-11ea-934c-ec840118ed73.png)
 
 ## How to use
 
