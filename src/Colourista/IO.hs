@@ -37,7 +37,7 @@ import Data.Semigroup (Semigroup (..))
 #endif
 import Data.Text (Text)
 
-import Colourista.Pure (HasColourMode)
+import Colourista.Mode (HasColourMode)
 
 import qualified Data.Text.IO as TIO
 

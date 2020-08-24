@@ -21,7 +21,8 @@ import Data.Semigroup (Semigroup)
 import Data.String (IsString)
 import Data.Text (Text)
 
-import Colourista.Pure (HasColourMode, bold, formatWith, italic, underline)
+import Colourista.Mode (HasColourMode)
+import Colourista.Pure (bold, formatWith, italic, underline)
 
 
 -- | Short alias for 'bold'.

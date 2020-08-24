@@ -8,6 +8,14 @@ The changelog is available [on GitHub][2].
 * [#26](https://github.com/kowainik/colourista/issues/26):
   Support enabling and disable of colouring with implicit parameters.
 
+  __Migration guide:__ You can continue using `colourista` without
+  changing anything and you still get colourful formatting.
+
+  However, if you want to enable or disable colouring, you need to add
+  the `HasColourMode =>` constraint to all functions that format data
+  or call such formatting functions, and set the value of the
+  `?colourMode` variable in the beginning of your application.
+
 ## 0.1.0.0 — May 2, 2020 🌈
 
 * [#22](https://github.com/kowainik/colourista/issues/22):

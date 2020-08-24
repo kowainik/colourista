@@ -1,10 +1,3 @@
-{-# OPTIONS_GHC -fno-warn-orphans #-}
-
-{-# LANGUAGE DataKinds             #-}
-{-# LANGUAGE FlexibleInstances     #-}
-{-# LANGUAGE ImplicitParams        #-}
-{-# LANGUAGE MultiParamTypeClasses #-}
-
 {- |
 Copyright: (c) 2020 Kowainik
 SPDX-License-Identifier: MPL-2.0
@@ -46,11 +39,6 @@ module Colourista.Pure
 
       -- * Reset
     , reset
-
-      -- * Colour enabling and disabling
-    , ColourMode (..)
-    , HasColourMode
-    , withColourMode
     ) where
 
 import Data.ByteString (ByteString)
@@ -58,10 +46,11 @@ import Data.List.NonEmpty (NonEmpty (..))
 import Data.Semigroup (Semigroup (..))
 import Data.String (IsString (..))
 import Data.Text (Text)
-import GHC.Classes (IP (..))
 import System.Console.ANSI (Color (..), ColorIntensity (Vivid), ConsoleIntensity (BoldIntensity),
                             ConsoleLayer (Background, Foreground), SGR (..), Underlining (..),
                             setSGRCode)
+
+import Colourista.Mode (HasColourMode, withColourMode)
 
 
 {- | General purpose function to format strings with multiple
@@ -271,49 +260,3 @@ reset = withColourMode $ fromString $ setSGRCode [Reset]
 {-# SPECIALIZE reset :: HasColourMode => String     #-}
 {-# SPECIALIZE reset :: HasColourMode => Text       #-}
 {-# SPECIALIZE reset :: HasColourMode => ByteString #-}
-
-----------------------------------------------------------------------------
--- Colour modes
-----------------------------------------------------------------------------
-
-{- | Data type that tells whether the colouring is enabled or
-disabled. It's used with the @ImplicitParams@ extension.
-
-@since 0.2.0.0
--}
-data ColourMode
-    = DisableColour
-    | EnableColour
-    deriving stock (Show, Eq, Enum, Bounded)
-
-{- | Magic instance to set the value of the implicit variable
-@?colourMode@ to 'EnableColour' by default. Equivalent to the
-following code:
-
-@
-?color = EnableColor
-@
-
-However, you still can override @?colourMode@ with any possible value.
-
-@since 0.2.0.0
--}
-instance IP "colourMode" ColourMode where
-    ip = EnableColour
-
-{- | Constraint that stores 'ColourMode' as an implicit parameter.
-
-@since 0.2.0.0
--}
-type HasColourMode = (?colourMode :: ColourMode)
-
-{- | Helper function for writing custom formatter. The function takes
-'ColourMode' from the implicit parameter context and either returns a
-given string or an empty string.
-
-@since 0.2.0.0
--}
-withColourMode :: (HasColourMode, IsString  str) => str -> str
-withColourMode str = case ?colourMode of
-    EnableColour  -> str
-    DisableColour -> ""
