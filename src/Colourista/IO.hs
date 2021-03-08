@@ -9,7 +9,7 @@ Functions to output formatted 'T.Text' directly to terminal.
 -}
 
 module Colourista.IO
-    ( -- * Color
+    ( -- * Colour
       -- ** Direct
       redMessage
     , greenMessage
