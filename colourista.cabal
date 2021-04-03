@@ -43,6 +43,7 @@ library
 
   build-depends:       base >= 4.10.1.0 && < 4.15
                      , ansi-terminal >= 0.10 && < 0.12
+                     , colour >=2.1.0
                      , bytestring ^>= 0.10
                      , ghc-prim >= 0.5 && < 0.7
                      , text ^>= 1.2.3.0
