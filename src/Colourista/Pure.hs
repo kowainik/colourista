@@ -18,6 +18,7 @@ module Colourista.Pure
     , white
     , magenta
     , cyan
+    , rgb
 
       -- * Background
     , redBg
@@ -42,7 +43,10 @@ module Colourista.Pure
     ) where
 
 import Data.ByteString (ByteString)
+import Data.Foldable (foldl')
+import Data.Int (Int8)
 import Data.List.NonEmpty (NonEmpty (..))
+import Data.Maybe (fromJust, isNothing, mapMaybe)
 import Data.Semigroup (Semigroup (..))
 import Data.String (IsString (..))
 import Data.Text (Text)
@@ -50,6 +54,7 @@ import System.Console.ANSI (Color (..), ColorIntensity (Vivid), ConsoleIntensity
                             ConsoleLayer (Background, Foreground), SGR (..), Underlining (..),
                             setSGRCode)
 
+import Data.Colour.SRGB (sRGB24)
 import Colourista.Mode (HasColourMode, withColourMode)
 
 
@@ -141,6 +146,51 @@ cyan = withColourMode $ fromString $ setSGRCode [SetColor Foreground Vivid Cyan]
 {-# SPECIALIZE cyan :: HasColourMode => String     #-}
 {-# SPECIALIZE cyan :: HasColourMode => Text       #-}
 {-# SPECIALIZE cyan :: HasColourMode => ByteString #-}
+
+-- | Code to apply any arbitrary hex color for the terminal output.
+rgb :: (HasColourMode, IsString str) => String -> Maybe str
+rgb hex | length hex > 6        = Nothing
+        | length rgbValues /= 3 = Nothing
+        | otherwise             =  Just $ withColourMode $ fromString $ setSGRCode [SetRGBColor Foreground (sRGB24 redComponent greenComponent blueComponent)]
+  where
+    hexVal = replicate (6 - length hex) '0' ++ hex
+    rgbValues  = map fromIntegral $ mapMaybe hexToInt [ (hexVal !! 0) : [hexVal !! 1]
+                                                      , (hexVal !! 2) : [hexVal !! 3]
+                                                      , (hexVal !! 4) : [hexVal !! 5]]
+
+    redComponent   = rgbValues !! 0
+    greenComponent = rgbValues !! 1
+    blueComponent  = rgbValues !! 2
+    hexToInt :: String -> Maybe Int
+    hexToInt [] = Just 0
+    hexToInt val | isNothing z || isNothing other  = Nothing
+                 | otherwise = Just $ fromJust z + 16 * fromJust other
+      where
+        other = hexToInt (init val)
+        z = case last val of
+              '0' -> Just 0
+              '1' -> Just 1
+              '2' -> Just 2
+              '3' -> Just 3
+              '4' -> Just 4
+              '5' -> Just 5
+              '6' -> Just 6
+              '7' -> Just 7
+              '8' -> Just 8
+              '9' -> Just 9
+              'a' -> Just 10
+              'b' -> Just 11
+              'c' -> Just 12
+              'd' -> Just 13
+              'e' -> Just 14
+              'f' -> Just 15
+              'A' -> Just 10
+              'B' -> Just 11
+              'C' -> Just 12
+              'D' -> Just 13
+              'E' -> Just 14
+              'F' -> Just 15
+              _   -> Nothing
 
 ----------------------------------------------------------------------------
 -- Background

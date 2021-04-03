@@ -19,6 +19,7 @@ module Colourista.IO
     , whiteMessage
     , magentaMessage
     , cyanMessage
+    , rgbMessage
       -- ** Aliases with unicode indicators
     , successMessage
     , infoMessage
@@ -35,7 +36,8 @@ module Colourista.IO
 #if __GLASGOW_HASKELL__ < 804
 import Data.Semigroup (Semigroup (..))
 #endif
-import Data.Text (Text)
+import Data.Maybe (fromJust, isNothing)
+import Data.Text (pack, Text)
 
 import Colourista.Mode (HasColourMode)
 
@@ -46,6 +48,12 @@ import qualified Colourista.Pure as Colourista
 ----------------------------------------------------------------------------
 -- Direct IO functions
 ----------------------------------------------------------------------------
+
+-- | Print 'Text' coloured in specified RGB notaion
+rgbMessage :: HasColourMode => String -> Text -> IO ()
+rgbMessage  colour text | isNothing res  = errorMessage $ pack $ "Invalid hex value - " ++ colour
+                        | otherwise      = formattedMessage [ fromJust res] text
+  where res = Colourista.rgb colour
 
 -- | Print 'Text' coloured in 'Colourista.red'.
 redMessage :: HasColourMode => Text -> IO ()
