@@ -3,7 +3,7 @@
 `colourista` uses [PVP Versioning][1].
 The changelog is available [on GitHub][2].
 
-## Unreleased
+## 🐰🥚 0.1.0.1 — Apr 5, 2021
 
 * [#55](https://github.com/kowainik/colourista/issues/55):
   Support GHC-9.0.

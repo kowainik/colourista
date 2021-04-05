@@ -45,8 +45,7 @@ In order to start using `colourista` in your project, you will need to set it up
    library. After the adjustment, this section could look like this:
 
    ```haskell
-   build-depends: base ^>= 4.14
-                , colourista ^>= 0.1
+   build-depends: colourista ^>= LATEST_VERSION
                 , ...
    ```
 2. In the module where you wish to use the colourful output with `colourista`,
