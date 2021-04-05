@@ -40,7 +40,7 @@ colouring and emphasis.
 
 In order to start using `colourista` in your project, you will need to set it up with the three easy steps:
 
-1. Add the dependency on `colorista` in your project's `.cabal` file. For this,
+1. Add the dependency on `colourista` in your project's `.cabal` file. For this,
    you should modify the `build-depends` section by adding the name of this
    library. After the adjustment, this section could look like this:
 
