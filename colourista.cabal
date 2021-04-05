@@ -18,14 +18,15 @@ tested-with:         GHC == 8.2.2
                      GHC == 8.4.4
                      GHC == 8.6.5
                      GHC == 8.8.4
-                     GHC == 8.10.2
+                     GHC == 8.10.4
+                     GHC == 9.0.1
 
 source-repository head
   type:                git
   location:            https://github.com/kowainik/colourista.git
 
 common common-options
-  build-depends:       base >= 4.10.1.0 && < 4.15
+  build-depends:       base >= 4.10.1.0 && < 4.16
 
   ghc-options:         -Wall
                        -Wcompat
@@ -71,8 +72,8 @@ library
                          Colourista.Short
 
   build-depends:       ansi-terminal >= 0.10 && < 0.12
-                     , bytestring ^>= 0.10
-                     , ghc-prim >= 0.5 && < 0.7
+                     , bytestring >= 0.10 && < 0.12
+                     , ghc-prim >= 0.5 && < 0.8
                      , text ^>= 1.2.3.0
 
 test-suite colourista-test
