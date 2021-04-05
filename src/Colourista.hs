@@ -14,12 +14,9 @@ module Colourista
          -- $pure
        , module Colourista.IO
          -- $io
-       , module Colourista.Mode
-         -- $mode
        ) where
 
 import Colourista.IO
-import Colourista.Mode
 import Colourista.Pure
 
 
@@ -31,9 +28,4 @@ customisation: colouring and emphasis.
 {- $io
 The set of functions that work in 'IO' to output formatted messages
 directly to terminal.
--}
-
-{- $mode
-'ColourMode' data type that allows disabling and enabling colouring
-based on the implicit @?colourMode@ parameter in scope.
 -}

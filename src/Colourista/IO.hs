@@ -37,8 +37,6 @@ import Data.Semigroup (Semigroup (..))
 #endif
 import Data.Text (Text)
 
-import Colourista.Mode (HasColourMode)
-
 import qualified Data.Text.IO as TIO
 
 import qualified Colourista.Pure as Colourista
@@ -48,42 +46,42 @@ import qualified Colourista.Pure as Colourista
 ----------------------------------------------------------------------------
 
 -- | Print 'Text' coloured in 'Colourista.red'.
-redMessage :: HasColourMode => Text -> IO ()
+redMessage :: Text -> IO ()
 redMessage = formattedMessage [Colourista.red]
 {-# INLINE redMessage #-}
 
 -- | Print 'Text' coloured in 'Colourista.green'.
-greenMessage :: HasColourMode => Text -> IO ()
+greenMessage :: Text -> IO ()
 greenMessage = formattedMessage [Colourista.green]
 {-# INLINE greenMessage #-}
 
 -- | Print 'Text' coloured in 'Colourista.blue'.
-blueMessage :: HasColourMode => Text -> IO ()
+blueMessage :: Text -> IO ()
 blueMessage = formattedMessage [Colourista.blue]
 {-# INLINE blueMessage #-}
 
 -- | Print 'Text' coloured in 'Colourista.yellow'.
-yellowMessage :: HasColourMode => Text -> IO ()
+yellowMessage :: Text -> IO ()
 yellowMessage = formattedMessage [Colourista.yellow]
 {-# INLINE yellowMessage #-}
 
 -- | Print 'Text' coloured in 'Colourista.black'.
-blackMessage :: HasColourMode => Text -> IO ()
+blackMessage :: Text -> IO ()
 blackMessage = formattedMessage [Colourista.black]
 {-# INLINE blackMessage #-}
 
 -- | Print 'Text' coloured in 'Colourista.white'.
-whiteMessage :: HasColourMode => Text -> IO ()
+whiteMessage :: Text -> IO ()
 whiteMessage = formattedMessage [Colourista.white]
 {-# INLINE whiteMessage #-}
 
 -- | Print 'Text' coloured in 'Colourista.magenta'.
-magentaMessage :: HasColourMode => Text -> IO ()
+magentaMessage :: Text -> IO ()
 magentaMessage = formattedMessage [Colourista.magenta]
 {-# INLINE magentaMessage #-}
 
 -- | Print 'Text' coloured in 'Colourista.cyan'.
-cyanMessage :: HasColourMode => Text -> IO ()
+cyanMessage :: Text -> IO ()
 cyanMessage = formattedMessage [Colourista.cyan]
 {-# INLINE cyanMessage #-}
 
@@ -95,7 +93,7 @@ cyanMessage = formattedMessage [Colourista.cyan]
 
 <<https://user-images.githubusercontent.com/4276606/80867598-dbd99000-8c8c-11ea-9fac-81a1a606d8d8.png Success message>>
 -}
-successMessage :: HasColourMode => Text -> IO ()
+successMessage :: Text -> IO ()
 successMessage t = greenMessage $ "  ✔ " <> t
 {-# INLINE successMessage #-}
 
@@ -103,7 +101,7 @@ successMessage t = greenMessage $ "  ✔ " <> t
 
 <<https://user-images.githubusercontent.com/4276606/80867597-db40f980-8c8c-11ea-9775-e8a3c4a7aaa2.png Information message>>
 -}
-infoMessage :: HasColourMode => Text -> IO ()
+infoMessage :: Text -> IO ()
 infoMessage t = blueMessage $ "  ⓘ " <> t
 {-# INLINE infoMessage #-}
 
@@ -111,7 +109,7 @@ infoMessage t = blueMessage $ "  ⓘ " <> t
 
 <<https://user-images.githubusercontent.com/4276606/80867596-db40f980-8c8c-11ea-8131-9c7cba32a4fd.png Skip message>>
 -}
-skipMessage :: HasColourMode => Text -> IO ()
+skipMessage :: Text -> IO ()
 skipMessage t = cyanMessage $ "  ▶ " <> t
 {-# INLINE skipMessage #-}
 
@@ -119,7 +117,7 @@ skipMessage t = cyanMessage $ "  ▶ " <> t
 
 <<https://user-images.githubusercontent.com/4276606/80867594-daa86300-8c8c-11ea-9c6a-a42b634a1e4b.png Warning message>>
 -}
-warningMessage :: HasColourMode => Text -> IO ()
+warningMessage :: Text -> IO ()
 warningMessage t = yellowMessage $ "  ⚠ " <> t
 {-# INLINE warningMessage #-}
 
@@ -127,7 +125,7 @@ warningMessage t = yellowMessage $ "  ⚠ " <> t
 
 <<https://user-images.githubusercontent.com/4276606/80867592-da0fcc80-8c8c-11ea-90e0-42aae8770c18.png Error message>>
 -}
-errorMessage :: HasColourMode => Text -> IO ()
+errorMessage :: Text -> IO ()
 errorMessage t = redMessage $ "  \128721 " <> t
 {-# INLINE errorMessage #-}
 
@@ -136,12 +134,12 @@ errorMessage t = redMessage $ "  \128721 " <> t
 ----------------------------------------------------------------------------
 
 -- | Print 'Text' emphasized with 'Colourista.bold'.
-boldMessage :: HasColourMode => Text -> IO ()
+boldMessage :: Text -> IO ()
 boldMessage = formattedMessage [Colourista.bold]
 {-# INLINE boldMessage #-}
 
 -- | Print 'Text' emphasized with 'Colourista.italic'.
-italicMessage :: HasColourMode => Text -> IO ()
+italicMessage :: Text -> IO ()
 italicMessage = formattedMessage [Colourista.italic]
 {-# INLINE italicMessage #-}
 
@@ -155,6 +153,6 @@ list, no formatting is applied.
 
 ![formattedMessage-example](https://user-images.githubusercontent.com/4276606/74608898-e6987600-50dc-11ea-9a93-bda701fd3c43.png)
 -}
-formattedMessage :: HasColourMode => [Text] -> Text -> IO ()
+formattedMessage :: [Text] -> Text -> IO ()
 formattedMessage formatting = TIO.putStrLn . Colourista.formatWith formatting
 {-# INLINE formattedMessage #-}

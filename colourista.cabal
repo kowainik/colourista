@@ -1,17 +1,8 @@
 cabal-version:       2.4
 name:                colourista
-version:             0.2.0.0
-synopsis:            Simple and convenient interface for colourful outputting
-description:
-    Convenient interface for printing colourful messages based on the @ansi-terminal@ library.
-    Supports enabling and disabling of colouring based on
-    the [Implicit Parameters](https://downloads.haskell.org/ghc/latest/docs/html/users_guide/glasgow_exts.html#implicit-parameters)
-    GHC feature.
-    .
-    Usage and output example:
-    .
-    * ![Example](https://user-images.githubusercontent.com/4276606/90915207-0c2d7180-e3d7-11ea-934c-ec840118ed73.png)
-
+version:             0.1.0.0
+synopsis:            Convenient interface for printing colourful messages
+description:         Convenient interface for printing colourful messages based on the @ansi-terminal@ library.
 homepage:            https://github.com/kowainik/colourista
 bug-reports:         https://github.com/kowainik/colourista/issues
 license:             MPL-2.0
@@ -37,14 +28,12 @@ library
   hs-source-dirs:      src
   exposed-modules:     Colourista
                          Colourista.IO
-                         Colourista.Mode
                          Colourista.Pure
                          Colourista.Short
 
   build-depends:       base >= 4.10.1.0 && < 4.15
                      , ansi-terminal >= 0.10 && < 0.12
                      , bytestring ^>= 0.10
-                     , ghc-prim >= 0.5 && < 0.7
                      , text ^>= 1.2.3.0
 
   ghc-options:         -Wall
