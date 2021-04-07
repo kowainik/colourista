@@ -36,9 +36,8 @@ module Colourista.IO
 #if __GLASGOW_HASKELL__ < 804
 import Data.Semigroup (Semigroup (..))
 #endif
-import Data.Maybe (fromJust, isNothing)
-import Data.Text (pack, Text)
-
+import Data.Text (Text)
+import Data.Word (Word8)
 import Colourista.Mode (HasColourMode)
 
 import qualified Data.Text.IO as TIO
@@ -50,10 +49,9 @@ import qualified Colourista.Pure as Colourista
 ----------------------------------------------------------------------------
 
 -- | Print 'Text' coloured in specified RGB notaion
-rgbMessage :: HasColourMode => String -> Text -> IO ()
-rgbMessage  colour text | isNothing res  = errorMessage $ pack $ "Invalid hex value - " ++ colour
-                        | otherwise      = formattedMessage [ fromJust res] text
-  where res = Colourista.rgb colour
+rgbMessage :: HasColourMode => Word8 -> Word8 -> Word8 -> Text -> IO ()
+rgbMessage  red green blue = formattedMessage [ resColor ]
+  where resColor = Colourista.rgb red green blue
 
 -- | Print 'Text' coloured in 'Colourista.red'.
 redMessage :: HasColourMode => Text -> IO ()
