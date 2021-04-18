@@ -148,6 +148,9 @@ cyan = withColourMode $ fromString $ setSGRCode [SetColor Foreground Vivid Cyan]
 {-# SPECIALIZE cyan :: HasColourMode => ByteString #-}
 
 -- | Code to apply any arbitrary hex color for the terminal output.
+--
+-- >>> rgb 0xff 0x00 0x00 "I am red"
+-- >>> rgb 0xff 0xff 0xff "I am white"
 rgb :: (HasColourMode, IsString str) => Word8 -> Word8 -> Word8 -> str
 rgb r g b = withColourMode $ fromString $ setSGRCode [SetRGBColor Foreground (sRGB24 r g b)]
     
