@@ -49,7 +49,7 @@ import qualified Colourista.Pure as Colourista
 ----------------------------------------------------------------------------
 
 -- | Print 'Text' coloured in specified RGB notaion
-rgbMessage :: HasColourMode => Word8 -> Word8 -> Word8 -> Text -> IO ()
+rgbMessage :: Word8 -> Word8 -> Word8 -> Text -> IO ()
 rgbMessage  red green blue = formattedMessage [ resColor ]
   where resColor = Colourista.rgb red green blue
 
