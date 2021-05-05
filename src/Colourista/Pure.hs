@@ -1,5 +1,5 @@
 {- |
-Copyright: (c) 2020 Kowainik
+Copyright: (c) 2020-2021 Kowainik
 SPDX-License-Identifier: MPL-2.0
 Maintainer: Kowainik <xrom.xkov@gmail.com>
 
@@ -8,7 +8,6 @@ This module introduces helpful pure codes to customise the terminal output view.
 
 module Colourista.Pure
     ( formatWith
-
       -- * Colour
     , red
     , green
@@ -76,76 +75,76 @@ It is also not natively supported on Windows 10.
 
 -}
 formatWith
-    :: (HasColourMode, IsString str, Semigroup str)
+    :: (IsString str, Semigroup str)
     => [str]
     -> str
     -> str
 formatWith formatting str = case formatting of
     []   -> str
     x:xs -> sconcat (x :| xs) <> str <> reset
-{-# SPECIALIZE formatWith :: HasColourMode => [String]     -> String     -> String     #-}
-{-# SPECIALIZE formatWith :: HasColourMode => [Text]       -> Text       -> Text       #-}
-{-# SPECIALIZE formatWith :: HasColourMode => [ByteString] -> ByteString -> ByteString #-}
+{-# SPECIALIZE formatWith :: [String]     -> String     -> String     #-}
+{-# SPECIALIZE formatWith :: [Text]       -> Text       -> Text       #-}
+{-# SPECIALIZE formatWith :: [ByteString] -> ByteString -> ByteString #-}
 
 ----------------------------------------------------------------------------
 -- Colours
 ----------------------------------------------------------------------------
 
 -- | Code to apply 'Red' colouring for the terminal output.
-red :: (HasColourMode, IsString str) => str
-red = withColourMode $ fromString $ setSGRCode [SetColor Foreground Vivid Red]
-{-# SPECIALIZE red :: HasColourMode => String     #-}
-{-# SPECIALIZE red :: HasColourMode => Text       #-}
-{-# SPECIALIZE red :: HasColourMode => ByteString #-}
+red :: IsString str => str
+red = fromString $ setSGRCode [SetColor Foreground Vivid Red]
+{-# SPECIALIZE red :: String     #-}
+{-# SPECIALIZE red :: Text       #-}
+{-# SPECIALIZE red :: ByteString #-}
 
 -- | Code to apply 'Green' colouring for the terminal output.
-green :: (HasColourMode, IsString str) => str
-green = withColourMode $ fromString $ setSGRCode [SetColor Foreground Vivid Green]
-{-# SPECIALIZE green :: HasColourMode => String     #-}
-{-# SPECIALIZE green :: HasColourMode => Text       #-}
-{-# SPECIALIZE green :: HasColourMode => ByteString #-}
+green :: IsString str => str
+green = fromString $ setSGRCode [SetColor Foreground Vivid Green]
+{-# SPECIALIZE green :: String     #-}
+{-# SPECIALIZE green :: Text       #-}
+{-# SPECIALIZE green :: ByteString #-}
 
 -- | Code to apply 'Blue' colouring for the terminal output.
-blue :: (HasColourMode, IsString str) => str
-blue = withColourMode $ fromString $ setSGRCode [SetColor Foreground Vivid Blue]
-{-# SPECIALIZE blue :: HasColourMode => String     #-}
-{-# SPECIALIZE blue :: HasColourMode => Text       #-}
-{-# SPECIALIZE blue :: HasColourMode => ByteString #-}
+blue :: IsString str => str
+blue = fromString $ setSGRCode [SetColor Foreground Vivid Blue]
+{-# SPECIALIZE blue :: String     #-}
+{-# SPECIALIZE blue :: Text       #-}
+{-# SPECIALIZE blue :: ByteString #-}
 
 -- | Code to apply 'Yellow' colouring for the terminal output.
-yellow :: (HasColourMode, IsString str) => str
-yellow = withColourMode $ fromString $ setSGRCode [SetColor Foreground Vivid Yellow]
-{-# SPECIALIZE yellow :: HasColourMode => String     #-}
-{-# SPECIALIZE yellow :: HasColourMode => Text       #-}
-{-# SPECIALIZE yellow :: HasColourMode => ByteString #-}
+yellow :: IsString str => str
+yellow = fromString $ setSGRCode [SetColor Foreground Vivid Yellow]
+{-# SPECIALIZE yellow :: String     #-}
+{-# SPECIALIZE yellow :: Text       #-}
+{-# SPECIALIZE yellow :: ByteString #-}
 
 -- | Code to apply 'Black' colouring for the terminal output.
-black :: (HasColourMode, IsString str) => str
-black = withColourMode $ fromString $ setSGRCode [SetColor Foreground Vivid Black]
-{-# SPECIALIZE black :: HasColourMode => String     #-}
-{-# SPECIALIZE black :: HasColourMode => Text       #-}
-{-# SPECIALIZE black :: HasColourMode => ByteString #-}
+black :: IsString str => str
+black = fromString $ setSGRCode [SetColor Foreground Vivid Black]
+{-# SPECIALIZE black :: String     #-}
+{-# SPECIALIZE black :: Text       #-}
+{-# SPECIALIZE black :: ByteString #-}
 
 -- | Code to apply 'White' colouring for the terminal output.
-white :: (HasColourMode, IsString str) => str
-white = withColourMode $ fromString $ setSGRCode [SetColor Foreground Vivid White]
-{-# SPECIALIZE white :: HasColourMode => String     #-}
-{-# SPECIALIZE white :: HasColourMode => Text       #-}
-{-# SPECIALIZE white :: HasColourMode => ByteString #-}
+white :: IsString str => str
+white = fromString $ setSGRCode [SetColor Foreground Vivid White]
+{-# SPECIALIZE white :: String     #-}
+{-# SPECIALIZE white :: Text       #-}
+{-# SPECIALIZE white :: ByteString #-}
 
 -- | Code to apply 'Magenta' colouring for the terminal output.
-magenta :: (HasColourMode, IsString str) => str
-magenta = withColourMode $ fromString $ setSGRCode [SetColor Foreground Vivid Magenta]
-{-# SPECIALIZE magenta :: HasColourMode => String     #-}
-{-# SPECIALIZE magenta :: HasColourMode => Text       #-}
-{-# SPECIALIZE magenta :: HasColourMode => ByteString #-}
+magenta :: IsString str => str
+magenta = fromString $ setSGRCode [SetColor Foreground Vivid Magenta]
+{-# SPECIALIZE magenta :: String     #-}
+{-# SPECIALIZE magenta :: Text       #-}
+{-# SPECIALIZE magenta :: ByteString #-}
 
 -- | Code to apply 'Cyan' colouring for the terminal output.
-cyan :: (HasColourMode, IsString str) => str
-cyan = withColourMode $ fromString $ setSGRCode [SetColor Foreground Vivid Cyan]
-{-# SPECIALIZE cyan :: HasColourMode => String     #-}
-{-# SPECIALIZE cyan :: HasColourMode => Text       #-}
-{-# SPECIALIZE cyan :: HasColourMode => ByteString #-}
+cyan :: IsString str => str
+cyan = fromString $ setSGRCode [SetColor Foreground Vivid Cyan]
+{-# SPECIALIZE cyan :: String     #-}
+{-# SPECIALIZE cyan :: Text       #-}
+{-# SPECIALIZE cyan :: ByteString #-}
 
 -- | Code to apply any arbitrary hex color for the terminal output.
 --
@@ -159,103 +158,103 @@ rgb r g b = withColourMode $ fromString $ setSGRCode [SetRGBColor Foreground (sR
 ----------------------------------------------------------------------------
 
 -- | Code to apply 'Red' background colouring for the terminal output.
-redBg :: (HasColourMode, IsString str) => str
-redBg = withColourMode $ fromString $ setSGRCode [SetColor Background Vivid Red]
-{-# SPECIALIZE redBg :: HasColourMode => String     #-}
-{-# SPECIALIZE redBg :: HasColourMode => Text       #-}
-{-# SPECIALIZE redBg :: HasColourMode => ByteString #-}
+redBg :: IsString str => str
+redBg = fromString $ setSGRCode [SetColor Background Vivid Red]
+{-# SPECIALIZE redBg :: String     #-}
+{-# SPECIALIZE redBg :: Text       #-}
+{-# SPECIALIZE redBg :: ByteString #-}
 
 -- | Code to apply 'Green' background colouring for the terminal output.
-greenBg :: (HasColourMode, IsString str) => str
-greenBg = withColourMode $ fromString $ setSGRCode [SetColor Background Vivid Green]
-{-# SPECIALIZE greenBg :: HasColourMode => String     #-}
-{-# SPECIALIZE greenBg :: HasColourMode => Text       #-}
-{-# SPECIALIZE greenBg :: HasColourMode => ByteString #-}
+greenBg :: IsString str => str
+greenBg = fromString $ setSGRCode [SetColor Background Vivid Green]
+{-# SPECIALIZE greenBg :: String     #-}
+{-# SPECIALIZE greenBg :: Text       #-}
+{-# SPECIALIZE greenBg :: ByteString #-}
 
 -- | Code to apply 'Blue' background colouring for the terminal output.
-blueBg :: (HasColourMode, IsString str) => str
-blueBg = withColourMode $ fromString $ setSGRCode [SetColor Background Vivid Blue]
-{-# SPECIALIZE blueBg :: HasColourMode => String     #-}
-{-# SPECIALIZE blueBg :: HasColourMode => Text       #-}
-{-# SPECIALIZE blueBg :: HasColourMode => ByteString #-}
+blueBg :: IsString str => str
+blueBg = fromString $ setSGRCode [SetColor Background Vivid Blue]
+{-# SPECIALIZE blueBg :: String     #-}
+{-# SPECIALIZE blueBg :: Text       #-}
+{-# SPECIALIZE blueBg :: ByteString #-}
 
 -- | Code to apply 'Yellow' background colouring for the terminal output.
-yellowBg :: (HasColourMode, IsString str) => str
-yellowBg = withColourMode $ fromString $ setSGRCode [SetColor Background Vivid Yellow]
-{-# SPECIALIZE yellowBg :: HasColourMode => String     #-}
-{-# SPECIALIZE yellowBg :: HasColourMode => Text       #-}
-{-# SPECIALIZE yellowBg :: HasColourMode => ByteString #-}
+yellowBg :: IsString str => str
+yellowBg = fromString $ setSGRCode [SetColor Background Vivid Yellow]
+{-# SPECIALIZE yellowBg :: String     #-}
+{-# SPECIALIZE yellowBg :: Text       #-}
+{-# SPECIALIZE yellowBg :: ByteString #-}
 
 -- | Code to apply 'Black' background colouring for the terminal output.
-blackBg :: (HasColourMode, IsString str) => str
-blackBg = withColourMode $ fromString $ setSGRCode [SetColor Background Vivid Black]
-{-# SPECIALIZE blackBg :: HasColourMode => String     #-}
-{-# SPECIALIZE blackBg :: HasColourMode => Text       #-}
-{-# SPECIALIZE blackBg :: HasColourMode => ByteString #-}
+blackBg :: IsString str => str
+blackBg = fromString $ setSGRCode [SetColor Background Vivid Black]
+{-# SPECIALIZE blackBg :: String     #-}
+{-# SPECIALIZE blackBg :: Text       #-}
+{-# SPECIALIZE blackBg :: ByteString #-}
 
 -- | Code to apply 'White' background colouring for the terminal output.
-whiteBg :: (HasColourMode, IsString str) => str
-whiteBg = withColourMode $ fromString $ setSGRCode [SetColor Background Vivid White]
-{-# SPECIALIZE whiteBg :: HasColourMode => String     #-}
-{-# SPECIALIZE whiteBg :: HasColourMode => Text       #-}
-{-# SPECIALIZE whiteBg :: HasColourMode => ByteString #-}
+whiteBg :: IsString str => str
+whiteBg = fromString $ setSGRCode [SetColor Background Vivid White]
+{-# SPECIALIZE whiteBg :: String     #-}
+{-# SPECIALIZE whiteBg :: Text       #-}
+{-# SPECIALIZE whiteBg :: ByteString #-}
 
 -- | Code to apply 'Magenta' background colouring for the terminal output.
-magentaBg :: (HasColourMode, IsString str) => str
-magentaBg = withColourMode $ fromString $ setSGRCode [SetColor Background Vivid Magenta]
-{-# SPECIALIZE magentaBg :: HasColourMode => String     #-}
-{-# SPECIALIZE magentaBg :: HasColourMode => Text       #-}
-{-# SPECIALIZE magentaBg :: HasColourMode => ByteString #-}
+magentaBg :: IsString str => str
+magentaBg = fromString $ setSGRCode [SetColor Background Vivid Magenta]
+{-# SPECIALIZE magentaBg :: String     #-}
+{-# SPECIALIZE magentaBg :: Text       #-}
+{-# SPECIALIZE magentaBg :: ByteString #-}
 
 -- | Code to apply 'Cyan' background colouring for the terminal output.
-cyanBg :: (HasColourMode, IsString str) => str
-cyanBg = withColourMode $ fromString $ setSGRCode [SetColor Background Vivid Cyan]
-{-# SPECIALIZE cyanBg :: HasColourMode => String     #-}
-{-# SPECIALIZE cyanBg :: HasColourMode => Text       #-}
-{-# SPECIALIZE cyanBg :: HasColourMode => ByteString #-}
+cyanBg :: IsString str => str
+cyanBg = fromString $ setSGRCode [SetColor Background Vivid Cyan]
+{-# SPECIALIZE cyanBg :: String     #-}
+{-# SPECIALIZE cyanBg :: Text       #-}
+{-# SPECIALIZE cyanBg :: ByteString #-}
 
 ----------------------------------------------------------------------------
 -- Emphasis
 ----------------------------------------------------------------------------
 
 -- | Code to apply __bold__ emphasis for the terminal output.
-bold :: (HasColourMode, IsString str) => str
-bold = withColourMode $ fromString $ setSGRCode [SetConsoleIntensity BoldIntensity]
-{-# SPECIALIZE bold :: HasColourMode => String     #-}
-{-# SPECIALIZE bold :: HasColourMode => Text       #-}
-{-# SPECIALIZE bold :: HasColourMode => ByteString #-}
+bold :: IsString str => str
+bold = fromString $ setSGRCode [SetConsoleIntensity BoldIntensity]
+{-# SPECIALIZE bold :: String     #-}
+{-# SPECIALIZE bold :: Text       #-}
+{-# SPECIALIZE bold :: ByteString #-}
 
 -- | Code to apply /italic/ emphasis for the terminal output.
-italic :: (HasColourMode, IsString str) => str
-italic = withColourMode $ fromString $ setSGRCode [SetItalicized True]
-{-# SPECIALIZE italic :: HasColourMode => String     #-}
-{-# SPECIALIZE italic :: HasColourMode => Text       #-}
-{-# SPECIALIZE italic :: HasColourMode => ByteString #-}
+italic :: IsString str => str
+italic = fromString $ setSGRCode [SetItalicized True]
+{-# SPECIALIZE italic :: String     #-}
+{-# SPECIALIZE italic :: Text       #-}
+{-# SPECIALIZE italic :: ByteString #-}
 
 -- | Code to apply __underline__ emphasis for the terminal output.
-underline :: (HasColourMode, IsString str) => str
-underline = withColourMode $ fromString $ setSGRCode [SetUnderlining SingleUnderline]
-{-# SPECIALIZE underline :: HasColourMode => String     #-}
-{-# SPECIALIZE underline :: HasColourMode => Text       #-}
-{-# SPECIALIZE underline :: HasColourMode => ByteString #-}
+underline :: IsString str => str
+underline = fromString $ setSGRCode [SetUnderlining SingleUnderline]
+{-# SPECIALIZE underline :: String     #-}
+{-# SPECIALIZE underline :: Text       #-}
+{-# SPECIALIZE underline :: ByteString #-}
 
 {- | Code to apply __double underline__ emphasis for the terminal output.
 
 __⚠ Caution:__ This is not widely supported. It is not natively supported on
 Windows 10
 -}
-doubleUnderline :: (HasColourMode, IsString str) => str
-doubleUnderline = withColourMode $ fromString $ setSGRCode [SetUnderlining DoubleUnderline]
-{-# SPECIALIZE doubleUnderline :: HasColourMode => String     #-}
-{-# SPECIALIZE doubleUnderline :: HasColourMode => Text       #-}
-{-# SPECIALIZE doubleUnderline :: HasColourMode => ByteString #-}
+doubleUnderline :: IsString str => str
+doubleUnderline = fromString $ setSGRCode [SetUnderlining DoubleUnderline]
+{-# SPECIALIZE doubleUnderline :: String     #-}
+{-# SPECIALIZE doubleUnderline :: Text       #-}
+{-# SPECIALIZE doubleUnderline :: ByteString #-}
 
 -- | Code to apply __no underline__ emphasis for the terminal output.
-noUnderline :: (HasColourMode, IsString str) => str
-noUnderline = withColourMode $ fromString $ setSGRCode [SetUnderlining NoUnderline]
-{-# SPECIALIZE noUnderline :: HasColourMode => String     #-}
-{-# SPECIALIZE noUnderline :: HasColourMode => Text       #-}
-{-# SPECIALIZE noUnderline :: HasColourMode => ByteString #-}
+noUnderline :: IsString str => str
+noUnderline = fromString $ setSGRCode [SetUnderlining NoUnderline]
+{-# SPECIALIZE noUnderline :: String     #-}
+{-# SPECIALIZE noUnderline :: Text       #-}
+{-# SPECIALIZE noUnderline :: ByteString #-}
 
 -- | Code to indent the terminal output by the given amount of spaces.
 indent :: (IsString str, Semigroup str) => Int -> str
@@ -267,8 +266,8 @@ indent n
 {-# SPECIALIZE indent :: Int -> ByteString #-}
 
 -- | Code to reset all previous code applied for the terminal output.
-reset :: (HasColourMode, IsString str) => str
-reset = withColourMode $ fromString $ setSGRCode [Reset]
-{-# SPECIALIZE reset :: HasColourMode => String     #-}
-{-# SPECIALIZE reset :: HasColourMode => Text       #-}
-{-# SPECIALIZE reset :: HasColourMode => ByteString #-}
+reset :: IsString str => str
+reset = fromString $ setSGRCode [Reset]
+{-# SPECIALIZE reset :: String     #-}
+{-# SPECIALIZE reset :: Text       #-}
+{-# SPECIALIZE reset :: ByteString #-}
