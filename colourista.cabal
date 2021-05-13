@@ -85,7 +85,7 @@ test-suite colourista-test
 
   build-depends:       colourista
                      , bytestring
-                     , hspec ^>= 2.7.1
+                     , hspec >= 2.7.1 && < 2.9
                      , text
 
   ghc-options:         -threaded
