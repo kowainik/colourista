@@ -19,6 +19,7 @@ module Colourista.IO
     , whiteMessage
     , magentaMessage
     , cyanMessage
+    , rgbMessage
       -- ** Aliases with unicode indicators
     , successMessage
     , infoMessage
@@ -37,6 +38,10 @@ import Data.Semigroup (Semigroup (..))
 #endif
 import Data.Text (Text)
 
+import Data.Word (Word8)
+import Colourista.Mode (HasColourMode)
+
+
 import qualified Data.Text.IO as TIO
 
 import qualified Colourista.Pure as Colourista
@@ -44,6 +49,11 @@ import qualified Colourista.Pure as Colourista
 ----------------------------------------------------------------------------
 -- Direct IO functions
 ----------------------------------------------------------------------------
+
+-- | Print 'Text' coloured in specified RGB notaion
+rgbMessage :: Word8 -> Word8 -> Word8 -> Text -> IO ()
+rgbMessage  red green blue = formattedMessage [ resColor ]
+  where resColor = Colourista.rgb red green blue
 
 -- | Print 'Text' coloured in 'Colourista.red'.
 redMessage :: Text -> IO ()
