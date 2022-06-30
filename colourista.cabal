@@ -74,7 +74,6 @@ library
 
   build-depends:       ansi-terminal >= 0.10 && < 0.12
                      , bytestring >= 0.10 && < 0.12
-                     , ghc-prim >= 0.5 && < 0.9
                      , text ^>= 1.2.3.0
 
 test-suite colourista-test
