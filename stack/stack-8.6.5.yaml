@@ -1,0 +1,5 @@
+resolver: lts-14.27
+packages:
+- ..
+extra-deps:
+- ansi-terminal-0.11.3@sha256:cc499d5f4c09a7213cd752ee69dbb5a5b8f3d1c777274e609eea4bca5c68ac8c,3321
