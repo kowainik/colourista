@@ -43,4 +43,4 @@ jobs:
         run: cabal build all --enable-tests
 
       - name: Test
-        run: cabal test all --test-show-details=direct --test-option="--color=always"
+        run: cabal test all --test-show-details=direct

@@ -47,4 +47,4 @@ jobs:
         run: stack test --no-run-tests --no-terminal --stack-yaml=./stack/stack-${{ matrix.ghc }}.yaml
 
       - name: Test
-        run: stack test --no-terminal --test-arguments "--color=always" --stack-yaml=./stack/stack-${{ matrix.ghc }}.yaml
+        run: stack test --no-terminal --stack-yaml=./stack/stack-${{ matrix.ghc }}.yaml
