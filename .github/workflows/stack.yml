@@ -22,11 +22,6 @@ jobs:
         with:
           submodules: true
 
-      - name: Setup z3
-        uses: pavpanchekha/setup-z3@1.2.2
-        with:
-          version: "4.8.7"
-
       - name: Setup Stack
         uses: haskell/actions/setup@v2
         with:
