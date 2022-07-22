@@ -20,13 +20,14 @@ tested-with:         GHC == 8.2.2
                      GHC == 8.8.4
                      GHC == 8.10.4
                      GHC == 9.0.1
+                     GHC == 9.2.3
 
 source-repository head
   type:                git
   location:            https://github.com/kowainik/colourista.git
 
 common common-options
-  build-depends:       base >= 4.10.1.0 && < 4.16
+  build-depends:       base >= 4.10.1.0 && < 4.17
 
   ghc-options:         -Wall
                        -Wcompat
@@ -46,6 +47,14 @@ common common-options
                        -hiedir=.hie
   if impl(ghc >= 8.10)
     ghc-options:       -Wunused-packages
+
+  if impl(ghc >= 9.0)
+    ghc-options:       -Winvalid-haddock
+                       -Wunicode-bidirectional-format-characters
+
+  if impl(ghc >= 9.2)
+    ghc-options:       -Wredundant-bang-patterns
+                       -Woperator-whitespace
 
   default-language:    Haskell2010
   default-extensions:  ConstraintKinds
@@ -73,7 +82,7 @@ library
 
   build-depends:       ansi-terminal >= 0.10 && < 0.12
                      , bytestring >= 0.10 && < 0.12
-                     , ghc-prim >= 0.5 && < 0.8
+                     , ghc-prim >= 0.5 && < 0.9
                      , text ^>= 1.2.3.0
 
 test-suite colourista-test
