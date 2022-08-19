@@ -17,6 +17,7 @@ module Colourista.Pure
     , white
     , magenta
     , cyan
+    , rgb
 
       -- * Background
     , redBg
@@ -41,13 +42,19 @@ module Colourista.Pure
     ) where
 
 import Data.ByteString (ByteString)
+import Data.Foldable (foldl')
+import Data.Int (Int8)
 import Data.List.NonEmpty (NonEmpty (..))
 import Data.Semigroup (Semigroup (..))
 import Data.String (IsString (..))
 import Data.Text (Text)
+import Data.Word (Word8)
 import System.Console.ANSI (Color (..), ColorIntensity (Vivid), ConsoleIntensity (BoldIntensity),
                             ConsoleLayer (Background, Foreground), SGR (..), Underlining (..),
                             setSGRCode)
+
+import Data.Colour.SRGB (sRGB24)
+import Colourista.Mode (HasColourMode, withColourMode)
 
 
 {- | General purpose function to format strings with multiple
@@ -139,6 +146,13 @@ cyan = fromString $ setSGRCode [SetColor Foreground Vivid Cyan]
 {-# SPECIALIZE cyan :: Text       #-}
 {-# SPECIALIZE cyan :: ByteString #-}
 
+-- | Code to apply any arbitrary hex color for the terminal output.
+--
+-- >>> rgb 0xff 0x00 0x00 "I am red"
+-- >>> rgb 0xff 0xff 0xff "I am white"
+rgb :: (HasColourMode, IsString str) => Word8 -> Word8 -> Word8 -> str
+rgb r g b = withColourMode $ fromString $ setSGRCode [SetRGBColor Foreground (sRGB24 r g b)]
+    
 ----------------------------------------------------------------------------
 -- Background
 ----------------------------------------------------------------------------
