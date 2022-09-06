@@ -36,7 +36,7 @@ colouring and emphasis.
 
 ## How to use
 
-`colourista` is compatible with the latest GHC compiler versions starting from `8.2.2`.
+`colourista` is compatible with the latest GHC compiler versions starting from `8.4`.
 
 In order to start using `colourista` in your project, you will need to set it up with the three easy steps:
 
