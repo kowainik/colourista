@@ -23,8 +23,12 @@ jobs:
           - "8.6.5"
           - "8.8.4"
           - "8.10.4"
-          - "9.0.1"
+          - "9.0.2"
+          - "9.2.4"
+          - "9.4.2"
         exclude:
+          - os: macOS-latest
+            ghc: 9.0.2
           - os: macOS-latest
             ghc: 8.10.4
           - os: macOS-latest
@@ -36,6 +40,8 @@ jobs:
           - os: macOS-latest
             ghc: 8.2.2
 
+          - os: windows-latest
+            ghc: 9.0.2
           - os: windows-latest
             ghc: 8.10.4
           - os: windows-latest
@@ -49,7 +55,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - uses: haskell/actions/setup@v1.2.9
+    - uses: haskell/actions/setup@v2
       id: setup-haskell-cabal
       name: Setup Haskell
       with:
@@ -64,7 +70,7 @@ jobs:
       run: |
         cabal freeze
 
-    - uses: actions/cache@v3.0.10
+    - uses: actions/cache@v3
       name: Cache ~/.cabal/store
       with:
         path: ${{ steps.setup-haskell-cabal.outputs.cabal-store }}
@@ -97,13 +103,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - uses: haskell/actions/setup@v1.2.9
+    - uses: haskell/actions/setup@v2
       name: Setup Haskell Stack
       with:
         ghc-version: ${{ matrix.ghc }}
         stack-version: ${{ matrix.stack }}
 
-    - uses: actions/cache@v3.0.10
+    - uses: actions/cache@v3
       name: Cache ~/.stack
       with:
         path: ~/.stack

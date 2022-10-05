@@ -1,6 +1,6 @@
 cabal-version:       2.4
 name:                colourista
-version:             0.1.0.1
+version:             0.1.0.2
 synopsis:            Convenient interface for printing colourful messages
 description:         Convenient interface for printing colourful messages based on the @ansi-terminal@ library.
 homepage:            https://github.com/kowainik/colourista
@@ -9,7 +9,7 @@ license:             MPL-2.0
 license-file:        LICENSE
 author:              Veronika Romashkina, Dmitrii Kovanikov
 maintainer:          Kowainik <xrom.xkov@gmail.com>
-copyright:           2020-2021 Kowainik
+copyright:           2020-2022 Kowainik
 category:            Terminal, ANSI
 build-type:          Simple
 extra-doc-files:     README.md
@@ -19,14 +19,16 @@ tested-with:         GHC == 8.2.2
                      GHC == 8.6.5
                      GHC == 8.8.4
                      GHC == 8.10.4
-                     GHC == 9.0.1
+                     GHC == 9.0.2
+                     GHC == 9.2.4
+                     GHC == 9.4.2
 
 source-repository head
   type:                git
   location:            https://github.com/kowainik/colourista.git
 
 common common-options
-  build-depends:       base >= 4.10.1.0 && < 4.16
+  build-depends:       base >= 4.10.1.0 && < 4.18
 
   ghc-options:         -Wall
                        -Wcompat
@@ -73,8 +75,7 @@ library
 
   build-depends:       ansi-terminal >= 0.10 && < 0.12
                      , bytestring >= 0.10 && < 0.12
-                     , ghc-prim >= 0.5 && < 0.8
-                     , text ^>= 1.2.3.0
+                     , text >= 1.2.3.0 && < 2.1
 
 test-suite colourista-test
   import:              common-options
@@ -85,7 +86,7 @@ test-suite colourista-test
 
   build-depends:       colourista
                      , bytestring
-                     , hspec >= 2.7.1 && < 2.9
+                     , hspec >= 2.7.1 && < 2.11
                      , text
 
   ghc-options:         -threaded
