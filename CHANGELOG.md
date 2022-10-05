@@ -3,6 +3,14 @@
 `colourista` uses [PVP Versioning][1].
 The changelog is available [on GitHub][2].
 
+## 0.1.0.2 – Oct 5, 2022
+
+* [#95](https://github.com/kowainik/colourista/issues/95):
+  Support GHC-9.2.
+* Support GHC-9.4.
+* Upgrade `text` to version `2.0`.
+* Upgrade `hspec` version.
+
 ## 🐰🥚 0.1.0.1 — Apr 5, 2021
 
 * [#55](https://github.com/kowainik/colourista/issues/55):
