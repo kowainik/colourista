@@ -72,7 +72,7 @@ library
                          Colourista.Pure
                          Colourista.Short
 
-  build-depends:       ansi-terminal >= 0.10 && < 0.12
+  build-depends:       ansi-terminal >= 0.10 && < 1.1
                      , bytestring >= 0.10 && < 0.13
                      , text >= 1.2.3.0 && < 2.2
 
