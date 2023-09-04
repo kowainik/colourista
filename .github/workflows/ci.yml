@@ -50,7 +50,7 @@ jobs:
           - os: windows-latest
             ghc: 8.4.4
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - uses: haskell-actions/setup@v2.5
       id: setup-haskell-cabal
@@ -98,7 +98,7 @@ jobs:
         ghc: ["8.10.4"]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - uses: haskell-actions/setup@v2.5
       name: Setup Haskell Stack
