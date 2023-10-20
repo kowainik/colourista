@@ -27,7 +27,7 @@ source-repository head
   location:            https://github.com/kowainik/colourista.git
 
 common common-options
-  build-depends:       base >= 4.10.1.0 && < 4.18
+  build-depends:       base >= 4.10.1.0 && < 4.20
 
   ghc-options:         -Wall
                        -Wcompat
@@ -73,8 +73,8 @@ library
                          Colourista.Short
 
   build-depends:       ansi-terminal >= 0.10 && < 0.12
-                     , bytestring >= 0.10 && < 0.12
-                     , text >= 1.2.3.0 && < 2.1
+                     , bytestring >= 0.10 && < 0.13
+                     , text >= 1.2.3.0 && < 2.2
 
 test-suite colourista-test
   import:              common-options
@@ -85,7 +85,7 @@ test-suite colourista-test
 
   build-depends:       colourista
                      , bytestring
-                     , hspec >= 2.7.1 && < 2.11
+                     , hspec >= 2.7.1 && < 2.12
                      , text
 
   ghc-options:         -threaded
