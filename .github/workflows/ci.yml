@@ -11,6 +11,24 @@ on:
   workflow_dispatch:
 
 jobs:
+  hlint:
+    name: hlint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up HLint
+        uses: haskell/actions/hlint-setup@v2
+        with:
+          version: "3.5"
+
+      - name: Run Hlint
+        uses: haskell/actions/hlint-run@v2
+        with:
+          path: '["src/", "test/"]'
+          fail-on: suggestion
+
   cabal:
     name: ${{ matrix.os }} / ghc ${{ matrix.ghc }}
     runs-on: ${{ matrix.os }}
