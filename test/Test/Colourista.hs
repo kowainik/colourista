@@ -1,5 +1,3 @@
-{-# LANGUAGE ImplicitParams #-}
-
 module Test.Colourista
     ( colouristaSpec
     ) where
